@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb://localhost/node-mongo-database-api",
+    "secret": "SECRET STRING USED TO SIGN AND VERIFY JWT TOKENS ~~~"
+}

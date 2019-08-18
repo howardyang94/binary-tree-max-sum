@@ -1,0 +1,31 @@
+﻿<!-- <h1>Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in with Angular 8!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul>  [(ngModel)]="treeString" -->
+<h3>Binary Tree Max Sum Calculator</h3>
+<p>Please enter your Binary Tree here using preorder traversal.  Please mark empty children with an 'e'.</p> <p>The calculator will return the sum of the longest path from root to node </p>
+<textarea style="width: 500px" #tree onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : (event.charCode >= 48 && event.charCode <= 57)|| event.charCode == 32 || event.charCode == 101"></textarea>
+<br>
+<button (click)="submit(tree.value)" [disabled]="loading">Submit</button>
+<button (click)="tree.value = ''; clear()"[disabled] = "disableReset">Reset</button>
+<div *ngIf="maxSum">
+        <p>For your entered tree: [ {{treeString}} ], Largest sum of the longest root to node path is : {{maxSum}}</p>
+</div>
+
+<p> eg: [ 1 2 e 5 1 e e e 3 6 e e 7 ] represents: </p>
+<pre>
+       1
+     /   \
+   2      3
+    \    /  \
+     5  6    7
+    /
+   1 
+</pre>
+
+   
