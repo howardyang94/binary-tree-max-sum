@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '@/_models';
-import { UserService, AuthenticationService, AlertService } from '@/_services';
+import { User } from '.././_models';
+import { UserService, AuthenticationService, AlertService } from '.././_services';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         // this.loadAllUsers();
     }
-
     // deleteUser(id: number) {
     //     this.userService.delete(id)
     //         .pipe(first())
@@ -48,6 +47,7 @@ export class HomeComponent implements OnInit {
         this.alertService.clear();
 
         this.treeString = tree.trim();
+        // perform a quick check, rest of checks will be done by back end
         if (this.treeString.charAt(0) === 'e') {
             this.clear();
             this.alertService.error("Root of the tree cannot be null");
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
                 this.loading = false;
             },
             error => {
-                this.clear();
+                // this.clear();
                 this.alertService.error(error);
                 this.loading = false;
             });

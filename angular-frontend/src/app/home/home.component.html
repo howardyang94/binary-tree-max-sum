@@ -1,31 +1,47 @@
-﻿<!-- <h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 8!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>  [(ngModel)]="treeString" -->
-<h3>Binary Tree Max Sum Calculator</h3>
-<p>Please enter your Binary Tree here using preorder traversal.  Please mark empty children with an 'e'.</p> <p>The calculator will return the sum of the longest path from root to node </p>
-<textarea style="width: 500px" #tree onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : (event.charCode >= 48 && event.charCode <= 57)|| event.charCode == 32 || event.charCode == 101"></textarea>
+﻿<div align="center" class="flex-container">
+    <alert></alert>
+  <h3 >Binary Tree Max Sum Calculator</h3>
+  <div class="instructions">
+    <p>Welcome, {{currentUser.firstName}}! </p>
+    <p>Please enter your tree using preorder traversal [Root, Left, then Right]. </p>
+    <p>Use whole integers, and mark empty branches with an 'e'.</p>
+    <p>The calculator will return the sum of the longest path from root to node. </p>
+  
+  <!-- <form> -->
+    <textarea  class="textbox" #tree placeholder="Enter tree here" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null :
+  (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 32 || event.charCode == 101" ></textarea>
 <br>
-<button (click)="submit(tree.value)" [disabled]="loading">Submit</button>
-<button (click)="tree.value = ''; clear()"[disabled] = "disableReset">Reset</button>
-<div *ngIf="maxSum">
-        <p>For your entered tree: [ {{treeString}} ], Largest sum of the longest root to node path is : {{maxSum}}</p>
-</div>
+<!-- onpaste="return false" -->
+<!-- </div> -->
 
-<p> eg: [ 1 2 e 5 1 e e e 3 6 e e 7 ] represents: </p>
-<pre>
-       1
-     /   \
+<!-- <div class="form-group"> -->
+  <button type="submit" class = "btn btn-primary mr-2" (click)="submit(tree.value)" [disabled]="loading">Submit</button>
+  <button class = "btn btn-outline-secondary" (click)="tree.value = ''; clear()"[disabled] = "disableReset">Clear</button>
+</div>
+<!-- </form> -->
+
+<div  *ngIf="maxSum" class ="font-weight-bold wrap">
+  <p>Input: <br> [ {{treeString}} ]</p> 
+  <p>Max Sum: <br> {{maxSum}}</p>
+</div>
+<br>
+<div >
+<!-- class ="footer"> "text-justify-->
+  <div class= "font-weight-light font-italic">
+    <p> Example:</p>
+    <p> [ 1 2 e 5 1 e e e 3 6 e e 7 ] represents: </p>
+  </div>
+  <pre>
+      1 
+    /    \
    2      3
     \    /  \
      5  6    7
     /
-   1 
-</pre>
-
-   
+   1</pre>
+   <!-- text-justify -->
+    <div  class="font-weight-light font-italic">
+      <p>and will return 9. <br> ( 1 + 2 + 5 + 1 )</p>
+    </div>
+  </div>
+</div>

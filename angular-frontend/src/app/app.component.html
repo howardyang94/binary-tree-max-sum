@@ -1,20 +1,22 @@
-﻿<!-- nav -->
+<!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" >
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()" *ngIf="currentUser"> Logout ({{currentUser.firstName}})</a>
-    </div>
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="users"*ngIf="currentUser"> Users</a>
+      <a class="nav-item nav-link" (click)="logout()" *ngIf="currentUser"> Logout</a>
+      <!-- <p class = "text-align-right">Welcome, {{currentUser.firstName}}</p> -->
+  </div>
 </nav>
-
+<br>
 <!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3">
-                <alert></alert>
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- <div class=""> -->
+  <div class="container-fluid">
+      <!-- <div class="row">
+          <div class="col-sm-6 offset-sm-3 col-md-6 offset-md-2"> -->
+              <!-- <alert></alert> -->
+              <router-outlet></router-outlet>
+          <!-- </div>
+      </div> -->
+  </div>
+<!-- </div> -->
 
