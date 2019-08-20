@@ -17,7 +17,7 @@ router.post('/sum', maxSum);
 module.exports = router;
 
 function maxSum(req, res, next) {
-    console.log(req.body);
+    // console.log(req.body);
         treeSumService.maxSum(req.body)
             .then(sum => sum ? res.json(sum) : res.status(400).json({ message: 'Invalid input entered, please check your entered string.' }))
             .catch(err => next(err));

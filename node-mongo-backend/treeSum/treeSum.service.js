@@ -9,7 +9,7 @@ function checkSafeInteger(integer) {
 }
 
 async function maxSum(userTree) {
-    console.log(userTree);
+    // console.log(userTree);
     // regex will remove all whitespace between values
     let tree = userTree.tree.split(/\s+/);
     // let flag = false;

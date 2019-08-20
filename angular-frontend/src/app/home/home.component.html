@@ -2,9 +2,9 @@
     <alert></alert>
   <h3 >Binary Tree Max Sum Calculator</h3>
   <div class="instructions">
-    <p>Welcome, {{currentUser.firstName}}! </p>
-    <p>Please enter your tree using preorder traversal [Root, Left, then Right]. </p>
-    <p>Use whole integers, and mark empty branches with an 'e'.</p>
+    <p><strong> Welcome, {{currentUser.firstName}}!</strong> </p>
+    <p>Enter your tree below using preorder traversal [Root, Left, then Right]. </p>
+    <p>Please use whole integers, and mark empty branches with an 'e'.</p>
     <p>The calculator will return the sum of the longest path from root to node. </p>
   
   <!-- <form> -->
@@ -21,7 +21,7 @@
 <!-- </form> -->
 
 <div  *ngIf="maxSum" class ="font-weight-bold wrap">
-  <p>Input: <br> [ {{treeString}} ]</p> 
+  <br><p>Input: <br> [ {{treeString}} ]</p> 
   <p>Max Sum: <br> {{maxSum}}</p>
 </div>
 <br>
@@ -32,16 +32,16 @@
     <p> [ 1 2 e 5 1 e e e 3 6 e e 7 ] represents: </p>
   </div>
   <pre>
-      1 
-    /    \
-   2      3
-    \    /  \
-     5  6    7
-    /
-   1</pre>
+    1        
+ /    \     
+2      3   
+ \    /  \  
+  5  6    7 
+  /           
+ 1            </pre>
    <!-- text-justify -->
     <div  class="font-weight-light font-italic">
-      <p>and will return 9. <br> ( 1 + 2 + 5 + 1 )</p>
+      <p>and will return a Max Sum of 9. <br> ( 1 + 2 + 5 + 1 )</p>
     </div>
   </div>
 </div>
