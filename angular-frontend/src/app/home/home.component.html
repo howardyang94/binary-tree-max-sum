@@ -1,0 +1,41 @@
+﻿<div align="center" class="flex-container">
+  <alert></alert>
+
+  <h3 >Binary Tree Max Sum Calculator</h3>
+
+  <div class="instructions">
+    <p><strong> Welcome, {{currentUser.firstName}}!</strong> </p>
+    <p>Enter your tree below using preorder traversal [Root, Left, then Right]. </p>
+    <p>Please use whole integers, and mark empty branches with an 'e'.</p>
+    <p>The calculator will return the sum of the longest path from root to node. </p>
+    
+    <textarea  class="textbox" #tree placeholder="Enter tree here" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null :
+  (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45 || event.charCode == 32 || event.charCode == 101" ></textarea>
+  <br>
+  <button type="submit" class = "btn btn-primary mr-2" (click)="submit(tree.value)" [disabled]="loading">Submit</button>
+  <button class = "btn btn-outline-secondary" (click)="tree.value = ''; clear()"[disabled] = "disableReset">Clear</button>
+</div>
+<div  *ngIf="maxSum" class ="font-weight-bold wrap">
+  <br><p>Input: <br>{{treeString}}</p> 
+  <p>Max Sum: <br> {{maxSum}}</p>
+</div>
+<br>
+<div >
+  <div class= "font-weight-light font-italic">
+    <p> Example:</p>
+    <p> 1 2 5 e 1 e e e 3 6 e e 7 <br> represents the tree: </p>
+  </div>
+  <pre>
+    1      
+   /  \     
+  2    3    
+ /    /  \  
+5    6    7 
+ \           
+  1          
+</pre>
+    <div  class="font-weight-light font-italic">
+      <p>and will return a Max Sum of 9. <br> ( 1 + 2 + 5 + 1 )</p>
+    </div>
+  </div>
+</div>
