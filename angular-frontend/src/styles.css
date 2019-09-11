@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+.loginInput {
+    max-width: 500px;
+}
+.alert {
+    max-width: 575px;
+}
+.textbox {
+    width: 450px;
+    /* width: 40% */
+}
+
+.instructions{
+    padding-top: 15px;
+    /* padding-bottom: 100px; */
+}
+.wrap {
+    word-wrap: break-word;
+}
+.maxtable {
+    table-layout: fixed
+}
+.navbar {
+    height: 40px;
+    /* position: fixed; */
+}
+.navbar-padding {
+    margin-top: 50px;
+}
