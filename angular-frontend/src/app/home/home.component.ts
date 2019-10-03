@@ -5,13 +5,12 @@ import { User } from '.././_models';
 import { UserService, AuthenticationService, AlertService } from '.././_services';
 
 @Component({ templateUrl: 'home.component.html' })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
     currentUser: User;
     users = [];
     treeString;
     maxSum;
     loading = false;
-    // disableReset = true;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -20,26 +19,14 @@ export class HomeComponent implements OnInit {
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
-
-    ngOnInit() {
-        // this.loadAllUsers();
-    }
     // deleteUser(id: number) {
     //     this.userService.delete(id)
     //         .pipe(first())
     //         .subscribe(() => this.loadAllUsers());
     // }
-
-    // private loadAllUsers() {
-    //     this.userService.getAll()
-    //         .pipe(first())
-    //         .subscribe(users => this.users = users);
-    // }
+    
+    // submit tree and send to backend for calculations
     submit(tree: string) {
-        // tree = '{"tree": "' + tree + '"}'
-        // const obj = {tree: tree}
-        // console.log(tree);
-        // console.log(JSON.stringify(obj));
         if (tree === '') {
             this.clear();
             return;
@@ -47,7 +34,7 @@ export class HomeComponent implements OnInit {
         this.alertService.clear();
 
         this.treeString = tree.trim();
-        // perform a quick check, rest of checks will be done by back end
+        // perform a quick input check, several other checks will be done by back end
         if (this.treeString.charAt(0) === 'e') {
             this.clear();
             this.alertService.error("Root of the tree cannot be null");
@@ -62,7 +49,6 @@ export class HomeComponent implements OnInit {
                 this.loading = false;
             },
             error => {
-                // this.clear();
                 this.alertService.error(error);
                 this.loading = false;
             });
@@ -71,6 +57,5 @@ export class HomeComponent implements OnInit {
         this.alertService.clear();
         this.treeString = '';
         this.maxSum = '';
-        // this.disableReset = true;
     }
 }

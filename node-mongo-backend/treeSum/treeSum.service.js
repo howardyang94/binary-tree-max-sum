@@ -9,24 +9,16 @@ function checkSafeInteger(integer) {
 }
 
 async function maxSum(userTree) {
-    // console.log(userTree);
     // regex will remove all whitespace between values
     let tree = userTree.tree.split(/\s+/);
-    // let flag = false;
     for (const key in tree) {
         if (tree.hasOwnProperty(key)) {
             // convert 'e' to null for our algorithm
             // wanted to use -1 to signify nulls, but negative ints are not disallowed
             if (tree[key] === 'e') {
                 tree[key] = null;
-            // } else if((tree[key]).includes('e')) {
-            //     throw `'${tree[key]}' is not a valid input`;
-            // } else if ((tree[key]).includes('.')) {
-            //     throw `'${tree[key]}' is not a valid input, no decimals allowed`;
-            }else {
-                // convert rest of characters to int for our algorithm
-                // 'e' is the only non numeric character input allowed
-                // the only invalid numbers will contain 'e'
+            } else {
+
                 let val;
                 try {
                     val = parseInt(tree[key]);
@@ -38,29 +30,6 @@ async function maxSum(userTree) {
             }
         }
     }
-
-    // used to check for extra numbers provided
-    // const length = tree.length;
-    // console.log(tree);
-   
-    // console.log(binaryTree.left.data);
-    // let ptr = binaryTree;
-    // console.log("left");
-    // while(ptr) {
-    //     console.log(ptr.data);
-    //     ptr = ptr.left;
-    // }
-    // ptr = binaryTree;
-    // console.log("right");
-    // while(ptr) {
-    //     console.log(ptr.data);
-    //     ptr = ptr.right;
-    // }
-    // console.log(binaryTree.right.right.data);
-
-    // reconstruct binary tree
-    // find max depth(s), find max sum
-    // const binaryTree = ;
     return longestPathSum(deserialize(tree));
 }
 function Node(data) {
@@ -71,50 +40,47 @@ function Node(data) {
 
 // recreate tree from a preorder array
 function deserialize(treeArray) {
-    // let count = 0;
     function createTree() {
         let current = treeArray.shift();
         if(current == null) {
             return null;
         }
-        // count++;
         let node = new Node(current);
         node.left = createTree();
         node.right = createTree();
-        // console.log("tree array length: " + treeArray.length);
-        // check if there are extra nodes provided after 
-        // if (count === len) {
+
             return node;
-        // } else {
-        //     console.log('tree array length: ' + treeArray.length);
-        //     throw 'There are extra elements in the tree, please check input';
-        // }
-        
     }
     return createTree();
 }
 // find longest path(s) from root to node, return largest sum
-function longestPathSum(binaryTree) {
+function longestPathSum(root) {
     let maxDepth = 0;
-    let ans = 0;
-    // let newsum;
-    function traverse (current, sum, depth) {
+    let ans;
+    const queue = [];
+    // push node and corresponding depth into a queue
+    queue.push([root, 1, root.data]);
+    while (queue.length != 0) {
+        const curr = queue.shift();
+        const node = curr[0];
+        const depth = curr[1];
+        const sum = curr[2]; 
         checkSafeInteger(sum);
-        if(current == null) {
-            if(depth > maxDepth) {
+        // if both are null, we are at a leaf. check depth and update sum if depth is >= max depth
+        if (node.left == null && node.right == null) {
+            if (depth > maxDepth) {
+            // record sum of the deepest node
                 maxDepth = depth;
                 ans = sum;
-            } else if (depth === maxDepth && sum > ans) {
-                ans = sum;
+            } else if (depth == maxDepth) {
+            // take largest sum if depth is equal to Max 
+                ans = Math.max(ans, sum);
             }
-            return;
-        }
-        // newsum = sum + current.data;
-        traverse(current.left, sum + current.data, depth + 1);
-        traverse(current.right, sum + current.data, depth + 1);
-        return;
+        } else {  
+        // otherwise we push any children to our queue 
+            if (node.left  != null) { queue.push([node.left,  depth + 1, sum + node.left.data ]); }
+            if (node.right != null) { queue.push([node.right, depth + 1, sum + node.right.data]); }
+        } 
     }
-    traverse(binaryTree, 0, 0);
     return ans;
 }
-

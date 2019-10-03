@@ -1,7 +1,9 @@
 var config = require('config.json');
 var mongoose = require('mongoose');
 mongoose.connect(
+    // docker string
 // "mongodb://mongo:27017/node-mongo-database-api", {
+    // local string
 process.env.MONGODB_URI || config.connectionString, { 
     useCreateIndex: true,
     useNewUrlParser: true,

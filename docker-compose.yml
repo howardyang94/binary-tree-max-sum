@@ -7,12 +7,12 @@ services:
       - "27017:27017"
 
   angular:
-    build: .\angular-frontend
+    image: howardyang94/maxsum:frontend
     ports:
       - "4200:4200" 
 
   nodexpress:
-    build: .\node-mongo-backend 
+    image: howardyang94/maxsum:backend 
     ports:
       - "4000:4000"
     restart: always

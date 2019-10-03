@@ -14,7 +14,7 @@ export class AuthenticationService {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
-
+    // getter for current user
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
@@ -24,6 +24,7 @@ export class AuthenticationService {
         return this.http.post<any>('http://localhost:4000/users/authenticate', { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
+                // allows user to automatically log in to home page from previous visit to the website
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;

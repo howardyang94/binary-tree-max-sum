@@ -5,6 +5,7 @@ var cluster = require('cluster')
 , numCPUs = require('os').cpus().length
 , port = 4000;
 
+// have master create workers
 if (cluster.isMaster) {
     console.log(`Master ${process.pid} is running`);
 
