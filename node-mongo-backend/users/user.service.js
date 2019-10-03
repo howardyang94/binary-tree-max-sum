@@ -10,7 +10,7 @@ module.exports = {
     getById,
     create,
     // update,
-    // delete: _delete
+    delete: _delete
 };
 
 async function authenticate({ username, password }) {
@@ -71,6 +71,6 @@ async function create(userParam) {
 //     await user.save();
 // }
 
-// async function _delete(id) {
-//     await User.findByIdAndRemove(id);
-// }
+async function _delete(id) {
+    await User.findByIdAndRemove(id);
+}

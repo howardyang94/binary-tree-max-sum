@@ -1,5 +1,5 @@
-const config = require('config.json');
-const mongoose = require('mongoose');
+var config = require('config.json');
+var mongoose = require('mongoose');
 mongoose.connect(
 // "mongodb://mongo:27017/node-mongo-database-api", {
 process.env.MONGODB_URI || config.connectionString, { 

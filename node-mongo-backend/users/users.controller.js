@@ -9,7 +9,7 @@ router.get('/', getAll);
 // router.get('/current', getCurrent);
 // router.get('/:id', getById);
 // router.put('/:id', update);
-// router.delete('/:id', _delete);
+router.delete('/:id', _delete);
 
 module.exports = router;
 
@@ -50,8 +50,8 @@ function getAll(req, res, next) {
 //         .catch(err => next(err));
 // }
 
-// function _delete(req, res, next) {
-//     userService.delete(req.params.id)
-//         .then(() => res.json({}))
-//         .catch(err => next(err));
-// }
+function _delete(req, res, next) {
+    userService.delete(req.params.id)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
