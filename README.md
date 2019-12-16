@@ -12,18 +12,17 @@ MongoDB
 ## Installation
 This project was containerized with Docker to make it simple to deploy locally.  You will need Docker and Docker Compose, which can be downloaded from the Docker website at : https://www.docker.com/products/docker-desktop 
 
-Run the following commands:
+Download 'docker-compose.yml' into a new directory.
+
+Navigate to the directory that contains 'docker-compose.yml'.
+
+Then un the following commands:
 
 ```bash
 docker pull howardyang94/maxsum:frontend
 
 docker pull howardyang94/maxsum:backend
-```
 
-Navigate to the directory that contains 'docker-compose.yml'.
-Then run the following:
-
-```bash
 docker-compose up --build
 ```
 
