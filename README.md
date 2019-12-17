@@ -14,9 +14,7 @@ This project was containerized with Docker to make it simple to deploy locally. 
 
 Download 'docker-compose.yml' into a new directory.
 
-Navigate to the directory that contains 'docker-compose.yml'.
-
-Then un the following commands:
+Navigate to the directory that contains 'docker-compose.yml', then run the following commands:
 
 ```bash
 docker pull howardyang94/maxsum:frontend
@@ -26,4 +24,4 @@ docker pull howardyang94/maxsum:backend
 docker-compose up --build
 ```
 
-Once everything has finished compiling, open a browser and go to 'localhost:4200' to use the application.
+Once everything has finished compiling, open a browser and go to 'localhost:4200'.
