@@ -12,6 +12,14 @@ MongoDB
 ## Installation
 This project was containerized with Docker to make it simple to deploy locally.  You will need Docker and Docker Compose, which can be downloaded from the Docker website at : https://www.docker.com/products/docker-desktop 
 
+You can check your Docker versions with the following commands: 
+
+```bash
+docker -v
+
+docker-compose -v
+```
+
 Download 'docker-compose.yml' into a new directory.
 
 Navigate to the directory that contains 'docker-compose.yml', then run the following commands:
